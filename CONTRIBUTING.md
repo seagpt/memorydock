@@ -4,7 +4,7 @@ Thank you for helping make private, portable agent memory easier to operate.
 
 ## Ground rules
 
-- This is a **community companion**, not an official Supermemory distribution or support channel.
+- This is a **community companion**, branded MemoryDock, not an official Supermemory distribution or support channel.
 - Preserve upstream behavior: do not replace the official API with a look-alike service.
 - Never include API keys, tokens, database snapshots, proprietary prompts, real memory content, or production logs.
 - Keep claims testable and distinguish local self-hosted behavior from hosted-platform-only features.

@@ -1,12 +1,12 @@
-# Supermemory Local Docker
+# MemoryDock
 
 > **Run the official Supermemory Local server in a small, reproducible Docker Compose deployment — private by default, pinned by version, and ready for real agent-memory experiments.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Community project](https://img.shields.io/badge/status-community%20project-6f42c1)](https://github.com/seagpt/supermemory-local-docker)
+[![Community project](https://img.shields.io/badge/status-community%20project-6f42c1)](https://github.com/seagpt/memorydock)
 [![Upstream: Supermemory](https://img.shields.io/badge/upstream-Supermemory-111827)](https://github.com/supermemoryai/supermemory)
 
-**Supermemory Local Docker** is a community-maintained Compose wrapper for the official [Supermemory Local](https://docs.supermemory.ai/self-hosting/quickstart) server. It does not fork, replace, or impersonate Supermemory. It packages the upstream CLI/server flow in a safer default runtime:
+**MemoryDock** is a community-maintained Compose wrapper for the official [Supermemory Local](https://docs.supermemory.ai/self-hosting/quickstart) server. It does not fork, replace, or impersonate Supermemory. It packages the upstream CLI/server flow in a safer default runtime:
 
 - **Loopback-only by default** — the API is not published to the Internet accidentally.
 - **Persistent named volume** — graph data, generated local auth material, and embedding cache survive container replacement.
@@ -15,7 +15,7 @@
 - **Production-shaped guardrails** — healthcheck, least privilege, read-only root filesystem, dropped Linux capabilities, and upgrade/restore gates.
 
 > [!IMPORTANT]
-> This is **not affiliated with, endorsed by, or supported by Supermemory**. “Supermemory” is used only to accurately describe compatibility with the upstream local server. Hosted-only functionality remains hosted-only.
+> This is **not affiliated with, endorsed by, or sponsored by Supermemory**. “Supermemory” is used only to accurately describe compatibility with the upstream local server. Hosted-only functionality remains hosted-only.
 
 ## Why this exists
 
@@ -51,8 +51,8 @@ The upstream docs say the local server’s standard memory API works against a l
 ### 2. Configure privately
 
 ```bash
-git clone https://github.com/seagpt/supermemory-local-docker.git
-cd supermemory-local-docker
+git clone https://github.com/seagpt/memorydock.git
+cd memorydock
 cp .env.example .env
 ```
 
@@ -98,7 +98,7 @@ If you need remote access, put an authenticated reverse proxy or private-network
 
 ### Data and backups
 
-All runtime state lives in the `supermemory-local-data` named volume by default. Back it up before an upgrade. A practical restore is not complete until an isolated container can start from the backup and pass a synthetic create → retrieve → delete/forget verification.
+All runtime state lives in the `memorydock-data` named volume by default. Back it up before an upgrade. A practical restore is not complete until an isolated container can start from the backup and pass a synthetic create → retrieve → delete/forget verification.
 
 See [the operations guide](docs/OPERATIONS.md).
 
@@ -163,4 +163,4 @@ If this project helps you, please:
 
 ## License
 
-This repository’s original wrapper code and documentation are released under [MIT](LICENSE). The official Supermemory server, CLI, SDKs, name, logos, and upstream material retain their respective terms. Consult upstream before redistributing any binary or trademarked asset.
+This repository’s original wrapper code and documentation are released under [MIT](LICENSE). The official Supermemory server, CLI, SDKs, name, logos, and upstream material retain their respective terms. MemoryDock is a **recipe**: it downloads the selected upstream binary during a user’s own image build and does not publish a prebuilt image. Do not remove, bypass, or misrepresent upstream document-cap, licensing, or service terms; obtain upstream clarification before commercial redistribution or registry publishing of an image containing its binary.
