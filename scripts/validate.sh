@@ -15,7 +15,13 @@ grep -q 'SUPERMEMORY_SERVER_VERSION' Dockerfile
 grep -q 'not affiliated' README.md
 
 if command -v docker >/dev/null 2>&1; then
-  docker compose --env-file .env.example config --quiet
+  temporary_env=0
+  if [[ ! -f .env ]]; then
+    cp .env.example .env
+    temporary_env=1
+    trap '[[ "$temporary_env" -eq 1 ]] && rm -f .env' EXIT
+  fi
+  docker compose config --quiet
   printf 'static + Compose validation: passed\n'
 else
   printf 'static validation: passed (Docker unavailable; Compose rendering not run)\n'
