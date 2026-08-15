@@ -56,7 +56,7 @@ cd supermemory-local-docker
 cp .env.example .env
 ```
 
-Edit `.env` locally. It is gitignored. Set exactly the provider configuration you intend to use; never commit it.
+Edit `.env` locally. It is gitignored. Set exactly the provider configuration you intend to use; never commit it. The current starter pins CLI `4.25.4` and official server `0.0.7`; update either only through the documented backup/test/release-note gate.
 
 ### 3. Start
 

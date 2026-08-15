@@ -6,8 +6,8 @@ services:
       context: .
       args:
         SUPERMEMORY_CLI_VERSION: ${SUPERMEMORY_CLI_VERSION:-4.25.4}
-        SUPERMEMORY_SERVER_VERSION: ${SUPERMEMORY_SERVER_VERSION:-0.0.3}
-    image: supermemory-local:${SUPERMEMORY_SERVER_VERSION:-0.0.3}
+        SUPERMEMORY_SERVER_VERSION: ${SUPERMEMORY_SERVER_VERSION:-0.0.7}
+    image: supermemory-local:${SUPERMEMORY_SERVER_VERSION:-0.0.7}
     env_file:
       - path: .env
         required: true

@@ -3,7 +3,7 @@
 FROM node:22-bookworm-slim
 
 ARG SUPERMEMORY_CLI_VERSION=4.25.4
-ARG SUPERMEMORY_SERVER_VERSION=0.0.3
+ARG SUPERMEMORY_SERVER_VERSION=0.0.7
 
 ENV NODE_ENV=production \
     HOME=/data \
@@ -11,7 +11,10 @@ ENV NODE_ENV=production \
     SUPERMEMORY_DATA_DIR=/data/.supermemory \
     SUPERMEMORY_DISABLE_TELEMETRY=1
 
-RUN useradd --create-home --uid 10001 --shell /usr/sbin/nologin supermemory \
+RUN apt-get update \
+    && apt-get install --no-install-recommends --yes ca-certificates curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd --create-home --uid 10001 --shell /usr/sbin/nologin supermemory \
     && npm install --global --omit=dev "supermemory@${SUPERMEMORY_CLI_VERSION}" \
     && mkdir -p /data/.supermemory /opt/supermemory \
     && SUPERMEMORY_INSTALL_DIR=/opt/supermemory \

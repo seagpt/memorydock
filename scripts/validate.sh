@@ -4,7 +4,7 @@ set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
 
-for file in Dockerfile compose.yaml .env.example README.md LICENSE SECURITY.md CONTRIBUTING.md docs/adr/0001-community-wrapper.md; do
+for file in Dockerfile compose.yaml .dockerignore .env.example README.md LICENSE SECURITY.md CONTRIBUTING.md docs/adr/0001-community-wrapper.md; do
   [[ -s "$file" ]] || { printf 'missing or empty: %s\n' "$file" >&2; exit 1; }
 done
 
