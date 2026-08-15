@@ -1,0 +1,42 @@
+name: supermemory-local
+
+services:
+  supermemory:
+    build:
+      context: .
+      args:
+        SUPERMEMORY_CLI_VERSION: ${SUPERMEMORY_CLI_VERSION:-4.25.4}
+        SUPERMEMORY_SERVER_VERSION: ${SUPERMEMORY_SERVER_VERSION:-0.0.3}
+    image: supermemory-local:${SUPERMEMORY_SERVER_VERSION:-0.0.3}
+    env_file:
+      - path: .env
+        required: true
+    environment:
+      PORT: "6767"
+      HOME: /data
+      SUPERMEMORY_DATA_DIR: /data/.supermemory
+      SUPERMEMORY_DISABLE_TELEMETRY: "1"
+    ports:
+      # Loopback by default. Use a reverse proxy or an explicitly reviewed override for remote access.
+      - "${BIND_ADDRESS:-127.0.0.1}:${SUPERMEMORY_PORT:-6767}:6767"
+    volumes:
+      - supermemory-data:/data
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:6767/v3/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))\""]
+      interval: 20s
+      timeout: 5s
+      retries: 15
+      start_period: 45s
+
+volumes:
+  supermemory-data:
+    name: ${SUPERMEMORY_VOLUME_NAME:-supermemory-local-data}
