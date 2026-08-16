@@ -4,6 +4,10 @@ A simple Docker Compose setup for [Supermemory Local](https://docs.supermemory.a
 
 It puts the official local server in Docker. It does not change Supermemory or add a new memory product.
 
+## Why this exists
+
+I needed to run Supermemory Local in Docker for my home lab. This is the small Docker setup I made for that use case while the upstream Hermes setup path is being worked out.
+
 ## Start
 
 You need Docker with Docker Compose and a supported language-model provider.
