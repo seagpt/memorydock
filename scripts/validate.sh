@@ -12,7 +12,7 @@ grep -q '^OPENAI_API_KEY=__SET_IN_PRIVATE_ENV__$' .env.example
 grep -q '127.0.0.1' compose.yaml
 grep -q 'no-new-privileges:true' compose.yaml
 grep -q 'SUPERMEMORY_SERVER_VERSION' Dockerfile
-grep -q 'not affiliated' README.md
+grep -q 'not made by or endorsed by Supermemory' README.md
 
 if command -v docker >/dev/null 2>&1; then
   temporary_env=0
