@@ -16,4 +16,4 @@ jobs:
       - name: Static validation
         run: ./scripts/validate.sh
       - name: Build pinned official-server wrapper
-        run: docker build --pull --tag memorydock:ci .
+        run: docker build --pull --tag supermemory-local:ci .

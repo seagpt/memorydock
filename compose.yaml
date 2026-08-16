@@ -1,4 +1,4 @@
-name: memorydock
+name: supermemory-local
 
 services:
   supermemory:
@@ -7,7 +7,7 @@ services:
       args:
         SUPERMEMORY_CLI_VERSION: ${SUPERMEMORY_CLI_VERSION:-4.25.4}
         SUPERMEMORY_SERVER_VERSION: ${SUPERMEMORY_SERVER_VERSION:-0.0.7}
-    image: memorydock:${SUPERMEMORY_SERVER_VERSION:-0.0.7}
+    image: supermemory-local:${SUPERMEMORY_SERVER_VERSION:-0.0.7}
     env_file:
       - path: .env
         required: true
@@ -39,4 +39,4 @@ services:
 
 volumes:
   supermemory-data:
-    name: ${MEMORYDOCK_VOLUME_NAME:-memorydock-data}
+    name: ${SUPERMEMORY_VOLUME_NAME:-supermemory-local-data}

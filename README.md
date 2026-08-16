@@ -1,12 +1,13 @@
-# MemoryDock
+# Supermemory Local Docker
 
-> **Run the official Supermemory Local server in a small, reproducible Docker Compose deployment — private by default, pinned by version, and ready for real agent-memory experiments.**
+> Docker Compose for Supermemory Local, built from pinned upstream releases.
+> Unofficial and not affiliated with Supermemory.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Community project](https://img.shields.io/badge/status-community%20project-6f42c1)](https://github.com/seagpt/memorydock)
+[![Community project](https://img.shields.io/badge/status-community%20project-6f42c1)](https://github.com/seagpt/supermemory-local-docker)
 [![Upstream: Supermemory](https://img.shields.io/badge/upstream-Supermemory-111827)](https://github.com/supermemoryai/supermemory)
 
-**MemoryDock** is a community-maintained Compose wrapper for the official [Supermemory Local](https://docs.supermemory.ai/self-hosting/quickstart) server. It does not fork, replace, or impersonate Supermemory. It packages the upstream CLI/server flow in a safer default runtime:
+Docker Compose for the official [Supermemory Local](https://docs.supermemory.ai/self-hosting/quickstart) server. This is a community-maintained, unofficial wrapper; it does not fork, replace, or represent Supermemory.
 
 - **Loopback-only by default** — the API is not published to the Internet accidentally.
 - **Persistent named volume** — graph data, generated local auth material, and embedding cache survive container replacement.
@@ -51,8 +52,8 @@ The upstream docs say the local server’s standard memory API works against a l
 ### 2. Configure privately
 
 ```bash
-git clone https://github.com/seagpt/memorydock.git
-cd memorydock
+git clone https://github.com/seagpt/supermemory-local-docker.git
+cd supermemory-local-docker
 cp .env.example .env
 ```
 
@@ -98,7 +99,7 @@ If you need remote access, put an authenticated reverse proxy or private-network
 
 ### Data and backups
 
-All runtime state lives in the `memorydock-data` named volume by default. Back it up before an upgrade. A practical restore is not complete until an isolated container can start from the backup and pass a synthetic create → retrieve → delete/forget verification.
+All runtime state lives in the `supermemory-local-data` named volume by default. Back it up before an upgrade. A practical restore is not complete until an isolated container can start from the backup and pass a synthetic create → retrieve → delete/forget verification.
 
 See [the operations guide](docs/OPERATIONS.md).
 
@@ -163,4 +164,4 @@ If this project helps you, please:
 
 ## License
 
-This repository’s original wrapper code and documentation are released under [MIT](LICENSE). The official Supermemory server, CLI, SDKs, name, logos, and upstream material retain their respective terms. MemoryDock is a **recipe**: it downloads the selected upstream binary during a user’s own image build and does not publish a prebuilt image. Do not remove, bypass, or misrepresent upstream document-cap, licensing, or service terms; obtain upstream clarification before commercial redistribution or registry publishing of an image containing its binary.
+This repository’s original wrapper code and documentation are released under [MIT](LICENSE). The official Supermemory server, CLI, SDKs, name, logos, and upstream material retain their respective terms. This is a **recipe**: it downloads the selected upstream binary during a user’s own image build and does not publish a prebuilt image. Do not remove, bypass, or misrepresent upstream document-cap, licensing, or service terms; obtain upstream clarification before commercial redistribution or registry publishing of an image containing its binary.
